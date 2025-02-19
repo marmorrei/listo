@@ -55,7 +55,7 @@ Error generating stack: `+u.message+`
     align-items: center;
     gap: 2rem;
   }
-`,Ov=()=>Qa.jsxs(_v,{children:[Qa.jsx("img",{src:"/tick.svg",alt:"done",height:50}),Qa.jsx("h1",{children:"¡Listo!"})]}),Dv=zv`
+`,Ov=()=>Qa.jsxs(_v,{children:[Qa.jsx("img",{src:"tick.svg",alt:"done",height:50}),Qa.jsx("h1",{children:"¡Listo!"})]}),Dv=zv`
   body {
   margin: 0;
   display: flex;
