@@ -1,6 +1,7 @@
 {
   "name": "listo",
   "private": true,
+  "homepage": "https://marmorrei.github.io/listo/",
   "version": "0.1.0",
   "type": "module",
   "scripts": {
