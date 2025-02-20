@@ -7,6 +7,7 @@ import eslintConfigPrettier from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import react from 'eslint-plugin-react'
+import eslintPluginPrettier from 'eslint-plugin-prettier/recommended'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -35,6 +36,7 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       react,
+      eslintPluginPrettier,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
