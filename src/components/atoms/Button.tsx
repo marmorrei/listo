@@ -3,12 +3,18 @@ import { styled } from 'styled-components'
 
 export type TButton = ButtonHTMLAttributes<HTMLButtonElement> & {
   name: 'add' | 'delete' | 'edit' | 'save' | 'cancel'
+  size?: 'big' | 'small'
 }
 
 const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+  font-family: 'Patrick Hand', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
   background-color: transparent;
   padding: 0.7rem 1rem;
   border: none;
@@ -24,82 +30,33 @@ const StyledButton = styled.button`
   &:hover {
     background-color: rgba(229, 229, 229, 0.7);
   }
-
-  @media (min-width: 1280px) {
-    display: none;
-  }
 `
 const StyledIcon = styled.img`
   height: 2rem;
 `
-
-const ResponsiveStyledButton = styled(StyledButton)`
-  display: none;
-
-  @media (min-width: 1280px) {
-    display: flex;
-    gap: 0.5rem;
-    font-family: 'Patrick Hand', serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1.2rem;
-  }
-`
+const buttonText = {
+  add: 'Añadir',
+  delete: 'Eliminar',
+  edit: 'Editar',
+  save: 'Guardar',
+  cancel: 'Cancelar',
+}
 
 export const Button: FC<TButton> = ({
   type = 'submit',
   name = 'add',
+  size = 'small',
   ...rest
 }) => {
   return (
-    (name === 'add' && (
-      <>
-        <StyledButton type={type} name={name} {...rest}>
-          <StyledIcon src="add.svg" alt="add-item" />
-        </StyledButton>
-        <ResponsiveStyledButton type={type} name={name} {...rest}>
-          Añadir <StyledIcon src="add.svg" alt="add-item" />
-        </ResponsiveStyledButton>
-      </>
-    )) ||
-    (name === 'delete' && (
-      <>
-        <StyledButton type={type} name={name} {...rest}>
-          <StyledIcon src="delete.svg" alt="delete" />
-        </StyledButton>
-        <ResponsiveStyledButton type={type} name={name} {...rest}>
-          Eliminar <StyledIcon src="delete.svg" alt="delete" />
-        </ResponsiveStyledButton>
-      </>
-    )) ||
-    (name === 'edit' && (
-      <>
-        <StyledButton type={type} name={name} {...rest}>
-          <StyledIcon src="edit.svg" alt="edit" />
-        </StyledButton>
-        <ResponsiveStyledButton type={type} name={name} {...rest}>
-          Editar <StyledIcon src="edit.svg" alt="edit" />
-        </ResponsiveStyledButton>
-      </>
-    )) ||
-    (name === 'save' && (
-      <>
-        <StyledButton type={type} name={name} {...rest}>
-          <StyledIcon src="save.svg" alt="save" />
-        </StyledButton>
-        <ResponsiveStyledButton type={type} name={name} {...rest}>
-          Guardar <StyledIcon src="save.svg" alt="save" />
-        </ResponsiveStyledButton>
-      </>
+    (size === 'small' && (
+      <StyledButton type={type} name={name} {...rest}>
+        <StyledIcon src={`${name}.svg`} alt={name} />
+      </StyledButton>
     )) || (
-      <>
-        <StyledButton type={type} name={name} {...rest}>
-          <StyledIcon src="close-cancel.svg" alt="close-cancel" />
-        </StyledButton>
-        <ResponsiveStyledButton type={type} name={name} {...rest}>
-          Cancelar <StyledIcon src="close-cancel.svg" alt="close-cancel" />
-        </ResponsiveStyledButton>
-      </>
+      <StyledButton type={type} name={name} {...rest}>
+        {buttonText[name]} <StyledIcon src={`${name}.svg`} alt={name} />
+      </StyledButton>
     )
   )
 }
