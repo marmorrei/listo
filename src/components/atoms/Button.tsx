@@ -50,11 +50,9 @@ export const Button: FC<TButton> = ({
 }) => {
   return (
     (size === 'small' && (
-      <>
-        <StyledButton type={type} name={name} {...rest}>
-          <StyledIcon src={`${name}.svg`} alt={name} />
-        </StyledButton>
-      </>
+      <StyledButton type={type} name={name} {...rest}>
+        <StyledIcon src={`${name}.svg`} alt={name} />
+      </StyledButton>
     )) || (
       <StyledButton type={type} name={name} {...rest}>
         {buttonText[name]} <StyledIcon src={`${name}.svg`} alt={name} />
